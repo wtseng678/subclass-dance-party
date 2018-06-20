@@ -16,7 +16,6 @@ body, a:link, a:visited, a:active{
 
 .title, .addDancerButton{
   padding:5px 12px;
-  float:right;
 }
 
 .title, .addLegionDancerButton{
@@ -57,6 +56,14 @@ body, a:link, a:visited, a:active{
   }
 }
 
+@keyframes slide {
+    0%   {background-color:red;  top:500px;}
+    25%  {background-color:yellow;  top:700px;}
+    50%  {background-color:blue;  top:600px;}
+    75%  {background-color:green; top:700px;}
+    100% {background-color:red; top:500px;}
+}
+
 .legion-dancer{
   position:absolute;
   background-size: 100px 200px;
@@ -71,7 +78,7 @@ body, a:link, a:visited, a:active{
   background-image: url("lib/michael.gif");
   background-size: 100px 200px; 
   animation-duration: 2s;
-  animation-name: rotate;  
+  
 }
 
 
@@ -79,7 +86,15 @@ body, a:link, a:visited, a:active{
   position:absolute;
   background-size: 100px 200px; 
   animation-name: rotate;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
 
+}
+
+.slide {
+  position:absolute;
+  background-size: 100px 200px; 
+  animation-name: slide;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
 }

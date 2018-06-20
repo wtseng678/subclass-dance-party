@@ -1,6 +1,7 @@
 $(document).ready(function() {
   window.dancers = [];
   window.left = 50;
+  window.top = 500;
   window.lineUpLeft = 50;
   window.backgrounds = ['lib/backgroundone.png', 'lib/backgroundtwo.jpg', 'lib/backgroundthree.jpg', 'lib/backgroundfour.jpg', 'lib/backgroundfive.jpg'];
   window.lightsOn = false; 
@@ -115,17 +116,30 @@ $(document).ready(function() {
   
   $('.shuffleButton').on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i++) {
-         window.dancers[i].jump();
+      window.dancers[i].jump();
     }
       
   });
   
-    $('.lineUpButton').on('click', function(event) {
+  $('.lineUpButton').on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i++) {
-         window.dancers[i].lineUp();
+      window.dancers[i].lineUp();
     }
     
     window.lineUpLeft = 50; // resetting
+      
+  });
+    
+    
+  $('.pairUpButton').on('click', function(event) {
+    window.left = 50; 
+    window.top = 500; 
+    for (var i = 0; i < window.dancers.length - 1; i += 2) {
+      window.dancers[i].setPosition(window.top, window.left);
+      window.dancers[i + 1].setPosition(window.top, window.left + 50);
+      window.left += 200; 
+      window.top += 50; 
+    }
       
   });
   

@@ -2,8 +2,8 @@ var compasDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<span class="compas-dancer"></span>'); 
   var myNode = this.$node;
-  myNode.click(function(){
-    myNode.toggleClass('rotate');
+  myNode.mouseover(function(){
+    myNode.toggleClass('slide');
 }); 
   this.setPosition(500, window.left);
   console.log(window.left);
@@ -28,10 +28,6 @@ compasDancer.prototype.step = function() {
   //this.lineUp(); 
   this.$node.css(styleSettings);
 
-  
-  
-  
-  
 };
 compasDancer.prototype.changeColors = function() {
   
@@ -55,7 +51,13 @@ compasDancer.prototype.jump = function() {
 };
 
 
-
+compasDancer.prototype.pair = function() {
+  window.left = 50; 
+  for (var i = 0; i < Math.floor(window.dancers.length / 2); i++) {
+    window.dancers[i].setPosition(500, window.left);
+    window.dancers[window.danceers.length - 1].setPosition(500, window.left + 100);
+  }
+};
 
 
 compasDancer.prototype.slide = function () {
