@@ -1,12 +1,15 @@
 var legionDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
-  
+  this.$node = $('<span class="legion-dancer"></span>');  
 
 };
 
 legionDancer.prototype = Object.create(makeDancer.prototype);
 legionDancer.prototype.constructor = legionDancer;
 
+
+
+// move the boxes to background class
 legionDancer.prototype.step = function() {
   this.oldStep = makeDancer.prototype.step;
   this.oldStep();
@@ -15,7 +18,10 @@ legionDancer.prototype.step = function() {
   };
   
   var styleSettings = {
-    border: '10px solid rgb(' + randColor() + ',' + randColor() + ',' + randColor() + ')' 
+    background: 'rgb(' + randColor() + ',' + randColor() + ',' + randColor() + ')',
+    height: Math.floor(Math.random() * 200),
+    width: Math.floor(Math.random() * 200)
+   
   };
   //this.lineUp(); 
   this.$node.css(styleSettings);
@@ -27,9 +33,6 @@ legionDancer.prototype.changeColors = function() {
   
   this.changeC = makeDancer.prototype.changeColors;
   this.changeC(); 
-  
-  
-  $('.dancer').css('border', '10px solid blue');
   this.$node.toggle();
 
 };
